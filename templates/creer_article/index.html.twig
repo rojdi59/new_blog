@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter un article!
+{% endblock %}
+{% block body %}
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-lg-6 mx-auto mt-5">
+				<h3>Ajouter un article!</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 mx-auto mt-5">
+				{{form_start(form_article)}}
+				<div class="mb-3">
+					<label for="" class="form-label">Catégorie:
+					</label>
+					{{form_row(form_article.idSousCategorie)}}
+				</div>
+				<div class="mb-3">
+					<label for="" class="form-label">Le titre de votre article:
+					</label>
+					{{form_row(form_article.titreArticle)}}
+				</div>
+				<div class="mb-3">
+					<label for="" class="form-label">Le contenu de votre article:
+					</label>
+					{{form_row(form_article.contenuArticle)}}
+				</div>
+				{{form_end(form_article)}}
+				<script>
+					// Écoutez la soumission du formulaire
+                  document.querySelector('form').addEventListener('submit', function () {
+                  // Empêche la soumission normale du formulaire
+
+                  // Effectuez ici la validation du formulaire si nécessaire
+
+                   // En cas de succès, affichez SweetAlert
+                Swal.fire('Votre article a été créé avec succès').then(function () { // Redirigez vers le tableau de bord ou une autre page si nécessaire
+                window.location.href = "{{ path('app_dashboard') }}";
+               });
+              });
+				</script>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
